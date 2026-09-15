@@ -3,25 +3,97 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* === MARCA (medida del empaque real, ver nowet_correccion-marca_v3) === */
+  --nowet-turquesa: #019aa5;
+  --nowet-turquesa-aa: #00727b;
+  --nowet-turquesa-900: #005f67;
+  --nowet-turquesa-100: #e0f5f7;
+  --nowet-turquesa-50: #f2fbfc;
+
+  --nowet-cian: #0494f7;
+  --nowet-cian-aa: #0a6fb8;
+  --nowet-cian-claro: #0bcff3;
+
+  /* === ACENTO === */
+  --magenta: #d8005d;
+  --magenta-900: #b0004b;
+  --magenta-100: #fce4ee;
+
+  /* === ACENTOS MENORES (solo del empaque, uso minimo) === */
+  --verde-lima: #9eb562;
+  --amarillo: #fed200;
+
+  /* === WHATSAPP (reservado a acciones de pedido) === */
+  --wa-600: #128c7e;
+  --wa-500: #25d366;
+
+  /* === NEUTROS === */
+  --ink-900: #14313a;
+  --ink-700: #3d4a52;
+  --ink-500: #6b7780;
+  --line: #dde6e9;
+  --surface: #ffffff;
+  --surface-alt: #f2fbfc;
+
+  /* === Escala de texto, con control "Aa" === */
+  --text-scale: 1;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink-900);
+  background: var(--surface);
+  font-size: calc(1.125rem * var(--text-scale));
+  line-height: 1.65;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.15;
+  color: var(--ink-900);
+}
+
+:focus-visible {
+  outline: 3px solid var(--nowet-turquesa-900);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--nowet-turquesa-100);
+  color: var(--ink-900);
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .max-w-prose-a11y {
+    max-width: 65ch;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
