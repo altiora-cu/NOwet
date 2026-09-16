@@ -3,9 +3,17 @@
 import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 
-export function PalabraNowet() {
+interface PalabraNowetProps {
+  /** Usar sobre fondos oscuros (foto con overlay), donde el par turquesa-900/cian no tiene contraste suficiente. */
+  sobreOscuro?: boolean;
+}
+
+export function PalabraNowet({ sobreOscuro = false }: PalabraNowetProps) {
   const [activo, setActivo] = useState(false);
   const prefiereMenosMovimiento = useReducedMotion();
+
+  const colorBase = sobreOscuro ? '#FFFFFF' : '#005F67';
+  const colorActivo = sobreOscuro ? '#0BCFF3' : '#0494F7';
 
   return (
     <motion.span
@@ -17,7 +25,7 @@ export function PalabraNowet() {
       onBlur={() => setActivo(false)}
       onTap={() => setActivo(true)}
       animate={{
-        color: activo ? '#0494F7' : '#005F67',
+        color: activo ? colorActivo : colorBase,
         scale: prefiereMenosMovimiento ? 1 : activo ? 1.06 : 1,
       }}
       transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
