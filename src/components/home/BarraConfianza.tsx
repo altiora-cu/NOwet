@@ -1,11 +1,11 @@
 import { Carrusel, CarruselItem } from '@/components/ui/Carrusel';
 
-const ITEMS: { icono: string; texto: string; pendiente?: boolean }[] = [
-  { icono: '🚚', texto: 'Entrega en Lima', pendiente: true },
-  { icono: '🤝', texto: 'Pago contra entrega', pendiente: true },
-  { icono: '💳', texto: 'Yape, Plin o transferencia', pendiente: true },
-  { icono: '💬', texto: 'Le ayudamos por WhatsApp' },
-  { icono: '🇵🇪', texto: 'Producto peruano' },
+const ITEMS: { icono: string; texto: string; pendiente?: boolean; fondo: string }[] = [
+  { icono: '🚚', texto: 'Entrega en Lima', pendiente: true, fondo: 'bg-turquesa-100' },
+  { icono: '🤝', texto: 'Pago contra entrega', pendiente: true, fondo: 'bg-magenta-100' },
+  { icono: '💳', texto: 'Yape, Plin o transferencia', pendiente: true, fondo: 'bg-[#FED200]/25' },
+  { icono: '💬', texto: 'Le ayudamos por WhatsApp', fondo: 'bg-[#25D366]/15' },
+  { icono: '🇵🇪', texto: 'Producto peruano', fondo: 'bg-turquesa-100' },
 ];
 
 export function BarraConfianza() {
@@ -15,8 +15,11 @@ export function BarraConfianza() {
         <Carrusel>
           {ITEMS.map((item) => (
             <CarruselItem key={item.texto}>
-              <div className="flex min-w-[220px] items-center gap-3 rounded-md border border-line px-4 py-3">
-                <span aria-hidden className="text-2xl">
+              <div className="flex min-w-[220px] items-center gap-3 rounded-md border border-line px-4 py-3 transition-all duration-hover hover:-translate-y-0.5 hover:shadow-sm">
+                <span
+                  aria-hidden
+                  className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-pill text-xl ${item.fondo}`}
+                >
                   {item.icono}
                 </span>
                 <span className="text-base font-semibold text-ink-900">

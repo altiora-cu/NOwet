@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { PalabraNowet } from './PalabraNowet';
+import { FotoProductoFlotante } from './FotoProductoFlotante';
 
 export function Hero() {
   return (
@@ -8,7 +10,7 @@ export function Hero() {
         <div className="order-2 lg:order-1">
           <p className="text-sm font-bold uppercase tracking-wide text-turquesa-aa">Absorbentes de humedad · Lima</p>
           <h1 className="mt-3 text-3xl font-extrabold text-ink-900">
-            En Lima la humedad no descansa. <em className="font-display italic text-turquesa-900">Nowet</em> tampoco.
+            En Lima la humedad no descansa. <PalabraNowet /> tampoco.
           </h1>
           <p className="mt-4 max-w-prose-a11y text-lg text-ink-700">
             Perchas, cajitas y saquitos que secan closets, cajones y ambientes. Entrega en Lima.
@@ -16,13 +18,13 @@ export function Hero() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/productos"
-              className="inline-flex min-h-[56px] items-center justify-center rounded-md bg-turquesa-aa px-6 text-base font-semibold text-white hover:bg-turquesa-900"
+              className="inline-flex min-h-[56px] items-center justify-center rounded-md bg-turquesa-aa px-6 text-base font-semibold text-white transition-all duration-hover hover:bg-turquesa-900 hover:shadow-md active:scale-[0.97]"
             >
               Ver productos
             </Link>
             <Link
               href="/calculadora"
-              className="inline-flex min-h-[56px] items-center justify-center rounded-md border-2 border-turquesa-aa px-6 text-base font-semibold text-turquesa-aa hover:bg-turquesa-50"
+              className="inline-flex min-h-[56px] items-center justify-center rounded-md border-2 border-turquesa-aa px-6 text-base font-semibold text-turquesa-aa transition-all duration-hover hover:bg-turquesa-50 active:scale-[0.97]"
             >
               ¿Cuánto necesito?
             </Link>
@@ -37,6 +39,7 @@ export function Hero() {
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover"
           />
+          <FotoProductoFlotante />
         </div>
       </div>
     </section>

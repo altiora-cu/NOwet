@@ -19,7 +19,7 @@ export function CardProducto({ producto }: { producto: Producto }) {
             alt={producto.imagenAlt}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-            className="object-contain p-4"
+            className="object-contain p-4 transition-transform duration-hover ease-out group-hover:scale-105 motion-reduce:group-hover:scale-100"
           />
         )}
       </Link>

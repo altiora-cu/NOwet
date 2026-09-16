@@ -21,9 +21,9 @@ export function ComoFunciona() {
         <div className="mt-8 grid gap-8 sm:grid-cols-3">
           {PASOS.map((paso, i) => (
             <Reveal key={paso.titulo}>
-              <div className="text-center sm:text-left">
-                <div className="relative mx-auto aspect-square w-32 sm:mx-0">
-                  <Image src={paso.img} alt={`Ilustración: ${paso.titulo}`} fill sizes="128px" className="object-contain" />
+              <div className="group text-center sm:text-left">
+                <div className="relative mx-auto aspect-square w-32 rounded-pill bg-turquesa-50 transition-transform duration-hover ease-out group-hover:scale-105 motion-reduce:group-hover:scale-100 sm:mx-0">
+                  <Image src={paso.img} alt={`Ilustración: ${paso.titulo}`} fill sizes="128px" className="object-contain p-3" />
                 </div>
                 <p className="mt-4 text-sm font-bold uppercase tracking-wide text-turquesa-aa">Paso {i + 1}</p>
                 <h3 className="mt-1 text-xl font-bold text-ink-900">{paso.titulo}</h3>

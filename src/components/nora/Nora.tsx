@@ -24,7 +24,6 @@ const CLAVE_CERRADA = 'nowet_nora_cerrada_sesion';
 export function Nora() {
   const [abierta, setAbierta] = useState(false);
   const [invitacion, setInvitacion] = useState(false);
-  const [cerradaEnSesion, setCerradaEnSesion] = useState(false);
   const [vista, setVista] = useState<Vista>('menu');
   const [espacio, setEspacio] = useState<Espacio | null>(null);
   const [tamano, setTamano] = useState<TamanoEspacio | null>(null);
@@ -34,11 +33,10 @@ export function Nora() {
   useEffect(() => {
     try {
       if (window.sessionStorage.getItem(CLAVE_CERRADA) === '1') {
-        setCerradaEnSesion(true);
         return;
       }
     } catch {
-      // sin sessionStorage, Nora simplemente puede reaparecer
+      // sin sessionStorage, la invitación simplemente puede repetirse
     }
     const temporizador = window.setTimeout(() => setInvitacion(true), 5000);
     return () => window.clearTimeout(temporizador);
@@ -57,14 +55,13 @@ export function Nora() {
 
   function abrir(origen: 'auto' | 'click') {
     setAbierta(true);
-    setInvitacion(false);
+    descartarInvitacion();
     setVista('menu');
     trackEvento('nora_abierta', { origen });
   }
 
-  function cerrar() {
-    setAbierta(false);
-    setCerradaEnSesion(true);
+  function descartarInvitacion() {
+    setInvitacion(false);
     try {
       window.sessionStorage.setItem(CLAVE_CERRADA, '1');
     } catch {
@@ -72,7 +69,9 @@ export function Nora() {
     }
   }
 
-  if (cerradaEnSesion && !abierta) return null;
+  function cerrar() {
+    setAbierta(false);
+  }
 
   return (
     <div className="fixed bottom-20 right-4 z-40 lg:bottom-6">
